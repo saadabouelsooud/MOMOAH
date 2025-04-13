@@ -1,0 +1,23 @@
+name: momah_app
+description: A legal consultation app with Riverpod or Bloc
+version: 1.0.0+1
+
+environment:
+  sdk: ">=3.1.0 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  go_router: any
+  google_fonts: any
+  fl_chart: ^0.63.0
+  
+
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.1
+
+flutter:
+  uses-material-design: true

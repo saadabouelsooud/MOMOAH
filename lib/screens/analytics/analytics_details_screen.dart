@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../widgets/analytics/_analytics_task_card.dart';
 import 'package:go_router/go_router.dart';
+import '../../utils/strings.dart';
 
 class AnalyticsDetailsScreen extends StatelessWidget {
   const AnalyticsDetailsScreen({super.key});
@@ -13,7 +14,7 @@ class AnalyticsDetailsScreen extends StatelessWidget {
         leading: IconButton(
           icon: const Icon(Icons.arrow_back_ios_new, color: Colors.black),
           onPressed: () =>
-              context.canPop() ? context.pop() : context.go('/analytics'),
+          context.canPop() ? context.pop() : context.go('/analytics'),
         ),
         backgroundColor: Colors.white,
         elevation: 0,
@@ -22,7 +23,7 @@ class AnalyticsDetailsScreen extends StatelessWidget {
           children: const [
             Icon(Icons.view_agenda_rounded, color: Colors.purple),
             SizedBox(width: 10),
-            Text('Task List',
+            Text(AppStrings.taskListTitle,
                 style: TextStyle(
                     fontSize: 24,
                     fontWeight: FontWeight.bold,
@@ -30,7 +31,6 @@ class AnalyticsDetailsScreen extends StatelessWidget {
           ],
         ),
         actions: const [
-          // Icon(Icons.arrow_forward),
           SizedBox(width: 8),
           Icon(Icons.more_vert),
         ],
@@ -43,9 +43,9 @@ class AnalyticsDetailsScreen extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 16),
             child: Row(
               children: [
-                _chip("Complete", true),
-                _chip("To Do", false),
-                _chip("In Review", false),
+                _chip(AppStrings.chipComplete, true),
+                _chip(AppStrings.chipToDo, false),
+                _chip(AppStrings.chipInReview, false),
               ],
             ),
           ),
@@ -55,34 +55,34 @@ class AnalyticsDetailsScreen extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 16),
               children: [
                 AnalyticsTaskCard(
-                  title: 'Dashboard design for admin',
-                  labels: ['High', 'On Track'],
-                  date: '14 Oct 2022',
+                  title: AppStrings.taskDashboardDesign,
+                  labels: [AppStrings.labelHigh, AppStrings.labelOnTrack],
+                  date: AppStrings.date1,
                   links: 5,
                   comments: 5,
                   avatarCount: 2,
                 ),
                 AnalyticsTaskCard(
-                  title: 'Konom web application',
-                  labels: ['Low', 'Meeting'],
-                  date: '14 Nov 2022',
+                  title: AppStrings.taskKonomApp,
+                  labels: [AppStrings.labelLow, AppStrings.labelMeeting],
+                  date: AppStrings.date2,
                   links: 2,
                   comments: 4,
                   avatarCount: 2,
                 ),
                 AnalyticsTaskCard(
-                  title: 'Research and development',
-                  labels: ['Medium', 'At Risk'],
-                  date: '14 Oct 2022',
+                  title: AppStrings.taskRnD,
+                  labels: [AppStrings.labelMedium, AppStrings.labelAtRisk],
+                  date: AppStrings.date1,
                   links: 6,
                   comments: 2,
                   avatarCount: 2,
-                  backgroundColor: Color(0xFF9CE9A7),
+                  backgroundColor: const Color(0xFF9CE9A7),
                 ),
                 AnalyticsTaskCard(
-                  title: 'Event booking application',
-                  labels: ['Medium', 'Meeting'],
-                  date: '14 Oct 2022',
+                  title: AppStrings.taskEventBooking,
+                  labels: [AppStrings.labelMedium, AppStrings.labelMeeting],
+                  date: AppStrings.date1,
                   links: 5,
                   comments: 5,
                   avatarCount: 2,
@@ -125,10 +125,10 @@ class AnalyticsDetailsScreen extends StatelessWidget {
               color: selected ? Colors.white : Colors.black12,
               borderRadius: BorderRadius.circular(8),
             ),
-            child: Text(
+            child: const Text(
               "5",
               style: TextStyle(
-                color: selected ? Colors.black : Colors.black,
+                color: Colors.black,
                 fontSize: 12,
                 fontWeight: FontWeight.bold,
               ),

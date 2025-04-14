@@ -1,9 +1,9 @@
-
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../widgets/common/_tab_chip.dart';
 import '../../widgets/common/_task_card.dart';
 import 'package:go_router/go_router.dart';
+import '../../utils/strings.dart'; // Import the strings file
 
 class DashboardDetailsScreen extends StatelessWidget {
   const DashboardDetailsScreen({super.key});
@@ -17,14 +17,17 @@ class DashboardDetailsScreen extends StatelessWidget {
         elevation: 0,
         leading: IconButton(
           icon: const Icon(Icons.arrow_back_ios_new, color: Colors.black),
-          onPressed: () => context.canPop() ? context.pop() : context.go('/dashboard'),
+          onPressed: () =>
+              context.canPop() ? context.pop() : context.go('/dashboard'),
         ),
-        title: Text('Hajime Illustration Projects',
-            style: GoogleFonts.nunitoSans(
-              color: Colors.black,
-              fontSize: 18,
-              fontWeight: FontWeight.w600,
-            )),
+        title: Text(
+          AppStrings.dashboardProjectCard1Title,
+          style: GoogleFonts.nunitoSans(
+            color: Colors.black,
+            fontSize: 18,
+            fontWeight: FontWeight.w600,
+          ),
+        ),
         centerTitle: false,
       ),
       body: SingleChildScrollView(
@@ -32,54 +35,67 @@ class DashboardDetailsScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text('Task for today (1)',
-                style: GoogleFonts.nunitoSans(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                )),
+            Text(
+              AppStrings.dashboardDetailsTodayTask,
+              style: GoogleFonts.nunitoSans(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
             const SizedBox(height: 20),
             Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Expanded(
                   child: Container(
-                    decoration: BoxDecoration(
-                      color: const Color(0xFFFFD54F),
-                      borderRadius: BorderRadius.circular(16),
+                    decoration: const BoxDecoration(
+                      image: DecorationImage(
+                        image: AssetImage('assets/vector_yellow.png'),
+                        fit: BoxFit
+                            .fill, // or BoxFit.fill / BoxFit.contain / BoxFit.fitWidth etc.
+                      ),
                     ),
-                    padding: const EdgeInsets.all(16),
+                    padding: const EdgeInsets.all(12),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Row(
                           children: [
                             Container(
-                              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 4, vertical: 2),
                               decoration: BoxDecoration(
                                 color: Colors.white,
-                                borderRadius: BorderRadius.circular(12),
+                                borderRadius: BorderRadius.circular(8),
                               ),
-                              child: Text('Ongoing',
-                                  style: GoogleFonts.nunitoSans(
-                                    fontWeight: FontWeight.w600,
-                                  )),
+                              child: Text(
+                                AppStrings.dashboardDetailsOngoing,
+                                style: GoogleFonts.nunitoSans(
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
                             ),
-                            const Spacer(),
-                            const Icon(Icons.arrow_forward_ios, size: 14),
                           ],
                         ),
                         const SizedBox(height: 16),
-                        Text('Hero Section Illustration',
-                            style: GoogleFonts.nunitoSans(
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold,
-                            )),
+                        Text(
+                          AppStrings.dashboardTaskCard11Subtitle,
+                          style: GoogleFonts.nunitoSans(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
                         const SizedBox(height: 16),
-                        Row(
-                          children: const [
-                            CircleAvatar(radius: 14, backgroundColor: Colors.white),
-                            SizedBox(width: 8),
-                            CircleAvatar(radius: 14, backgroundColor: Colors.white),
+                        const Row(
+                          children: [
+                            CircleAvatar(
+                                backgroundColor: Colors.white,
+                                radius: 14,
+                                backgroundImage: AssetImage('assets/a1.jpg')),
+                            CircleAvatar(
+                                backgroundColor: Colors.white,
+                                radius: 14,
+                                backgroundImage: AssetImage('assets/a2.jpg')),
                           ],
                         ),
                       ],
@@ -99,24 +115,39 @@ class DashboardDetailsScreen extends StatelessWidget {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text('10 March',
-                                style: GoogleFonts.nunitoSans(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 16,
-                                )),
+                            Text(
+                              AppStrings.dashboardDetailsMarch10,
+                              style: GoogleFonts.nunitoSans(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 16,
+                              ),
+                            ),
                             const SizedBox(height: 8),
-                            ...['Conceptualization', 'Sketching and Ideas', 'Digital Rendering']
+                            ...[
+                              'المرحلة الاولي',
+                              'المرحلة الثانية',
+                              'المرحلة الثالثة'
+                            ]
                                 .map(
                                   (e) => Padding(
-                                    padding: const EdgeInsets.symmetric(vertical: 4.0),
+                                    padding: const EdgeInsets.symmetric(
+                                        vertical: 4.0),
                                     child: Row(
                                       children: [
-                                        const Icon(Icons.radio_button_unchecked, size: 16),
+                                        Icon(
+                                            e == 'المرحلة الثالثة'
+                                                ? Icons
+                                                    .check_box_outline_blank_rounded
+                                                : Icons.check_box_rounded,
+                                            size: 16),
                                         const SizedBox(width: 8),
                                         Expanded(
-                                          child: Text(e,
-                                              style: GoogleFonts.nunitoSans(
-                                                  fontSize: 14)),
+                                          child: Text(
+                                            e,
+                                            style: GoogleFonts.nunitoSans(
+                                              fontSize: 14,
+                                            ),
+                                          ),
                                         ),
                                       ],
                                     ),
@@ -135,11 +166,13 @@ class DashboardDetailsScreen extends StatelessWidget {
                           borderRadius: BorderRadius.circular(24),
                         ),
                         child: Center(
-                          child: Text('Subtask  •  2 out of 3',
-                              style: GoogleFonts.nunitoSans(
-                                  color: Colors.white,
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.w500)),
+                          child: Text(
+                            AppStrings.dashboardDetailsSubtask,
+                            style: GoogleFonts.nunitoSans(
+                                color: Colors.white,
+                                fontSize: 14,
+                                fontWeight: FontWeight.w500),
+                          ),
                         ),
                       ),
                     ],
@@ -148,45 +181,47 @@ class DashboardDetailsScreen extends StatelessWidget {
               ],
             ),
             const SizedBox(height: 32),
-            Text('Other tasks',
-                style: GoogleFonts.nunitoSans(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                )),
+            Text(
+              AppStrings.dashboardDetailsOtherTasks,
+              style: GoogleFonts.nunitoSans(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
             const SizedBox(height: 16),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: const [
-                TabChip(label: 'All (23)', selected: true),
-                TabChip(label: 'To Do'),
-                TabChip(label: 'Ongoing'),
-                TabChip(label: 'Done'),
+                TabChip(label: AppStrings.tabAllWithCount, selected: true),
+                TabChip(label: AppStrings.tabToDo),
+                TabChip(label: AppStrings.tabOngoing),
+                TabChip(label: AppStrings.tabDone),
               ],
             ),
             const SizedBox(height: 16),
             const TaskCard(
-              title: 'Theme Development and Rese...',
-              subtitle: 'Hajime Illustration Projects',
-              due: 'Due Tomorrow',
-              status: 'Ongoing',
+              title: AppStrings.dashboardTaskCardTask1,
+              subtitle: AppStrings.dashboardProjectCard1Title,
+              due: AppStrings.dashboardTaskCard1Due,
+              status: AppStrings.dashboardTaskCard1Status,
               color: Color(0xFFFFF3E0),
               statusColor: Color(0xFFFFB300),
             ),
             const SizedBox(height: 12),
             const TaskCard(
-              title: 'Documentation and Delivery',
-              subtitle: 'Hajime Illustration Projects',
-              due: 'Due Tomorrow',
-              status: 'Ongoing',
+              title: AppStrings.dashboardTaskCardTask2,
+              subtitle: AppStrings.dashboardProjectCard1Title,
+              due: AppStrings.dashboardTaskCard2Due,
+              status: AppStrings.dashboardTaskCard2Status,
               color: Color(0xFFFFF3E0),
               statusColor: Color(0xFFFFB300),
             ),
             const SizedBox(height: 12),
             const TaskCard(
-              title: 'Illustration Series Creation',
-              subtitle: 'Hajime Illustration Projects',
-              due: '',
-              status: 'Done',
+              title: AppStrings.dashboardTaskCardTask3,
+              subtitle: AppStrings.dashboardProjectCard1Title,
+              due: AppStrings.dashboardTaskCard3Due,
+              status: AppStrings.dashboardTaskCard3Status,
               color: Color(0xFFE1F5FE),
               statusColor: Colors.lightBlue,
             ),
@@ -198,15 +233,18 @@ class DashboardDetailsScreen extends StatelessWidget {
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(28),
                   ),
-                  padding: const EdgeInsets.symmetric(horizontal: 36, vertical: 16),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 36, vertical: 16),
                 ),
                 onPressed: () {},
-                child: Text('Mark as Done',
-                    style: GoogleFonts.nunitoSans(
-                      color: Colors.white,
-                      fontSize: 16,
-                      fontWeight: FontWeight.w600,
-                    )),
+                child: Text(
+                  AppStrings.dashboardDetailsMarkAsDone,
+                  style: GoogleFonts.nunitoSans(
+                    color: Colors.white,
+                    fontSize: 16,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
               ),
             ),
           ],

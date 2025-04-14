@@ -41,9 +41,9 @@ class BarChartSection extends StatelessWidget {
 
   BarChartGroupData _buildBarGroup(int x, double p, double r, double c) {
     return BarChartGroupData(x: x, barRods: [
-      BarChartRodData(toY: p, color: Colors.purple.shade300, width: 6),
-      BarChartRodData(toY: r, color: Colors.pinkAccent.shade100, width: 6),
-      BarChartRodData(toY: c, color: Colors.green.shade400, width: 6),
+      BarChartRodData(toY: r, color: Color(0xFF07706D), width: 6),
+      BarChartRodData(toY: p, color: Color(0xFFB1313D), width: 6),
+      BarChartRodData(toY: c, color: Color(0xFF8AB729), width: 6),
     ]);
   }
 }

@@ -35,7 +35,7 @@ class StatusCard extends StatelessWidget {
               ],
             ),
             const Positioned(
-              right: 0,
+              left: 0,
               top: 0,
               child: Icon(Icons.more_horiz),
             ),

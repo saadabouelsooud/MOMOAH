@@ -11,6 +11,8 @@ dependencies:
   go_router: any
   google_fonts: any
   fl_chart: ^0.63.0
+  flutter_localizations:
+    sdk: flutter
   
 
 
